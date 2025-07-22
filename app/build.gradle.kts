@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt") // Room veritabanı için kapt eklentisi
 }
 
 android {
@@ -39,6 +40,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    // TensorFlow Lite modelleri için assets'ten yükleme
+    aaptOptions {
+        noCompress("tflite")
+    }
 }
 
 dependencies {
@@ -55,6 +61,26 @@ dependencies {
 
     // ML Kit for Face Detection
     implementation("com.google.mlkit:face-detection:16.1.5")
+
+    // ML Kit Face Mesh Detection (yüz detayları için)
+    implementation("com.google.mlkit:face-mesh-detection:16.0.0-beta1")
+
+    // TensorFlow Lite (yüz tanıma için)
+    implementation("org.tensorflow:tensorflow-lite:2.9.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.2")
+
+// Room veritabanı (yüz verileri saklamak için)
+    implementation("androidx.room:room-runtime:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
+
+    // Kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+
+    // ViewModel ve LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
     // Test
     testImplementation("junit:junit:4.13.2")

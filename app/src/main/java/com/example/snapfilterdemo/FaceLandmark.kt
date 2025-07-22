@@ -1,8 +1,13 @@
 package com.example.snapfilterdemo
 
+import com.google.mlkit.vision.face.FaceLandmark as MLKitFaceLandmark
+
 object FaceLandmark {
-    const val LEFT_EYE = 4
-    const val RIGHT_EYE = 10
-    const val NOSE_BASE = 6
-    const val MOUTH_BOTTOM = 0
+    // ML Kit'in standart sabitleri ile değiştiriliyor
+    const val LEFT_EYE = MLKitFaceLandmark.LEFT_EYE
+    const val RIGHT_EYE = MLKitFaceLandmark.RIGHT_EYE
+    const val NOSE_BASE = MLKitFaceLandmark.NOSE_BASE
+    const val MOUTH_BOTTOM = MLKitFaceLandmark.MOUTH_BOTTOM
+    const val MOUTH_LEFT = MLKitFaceLandmark.MOUTH_LEFT
+    const val MOUTH_RIGHT = MLKitFaceLandmark.MOUTH_RIGHT
 }
